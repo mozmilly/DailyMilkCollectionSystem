@@ -10,37 +10,22 @@ public class User  implements java.io.Serializable {
 
 
      private String username;
-     private String firstName;
-     private String lastName;
-     private String email;
-     private int phone;
-     private String address;
-     private String role;
+     private int nationalId;
      private String password;
+     private String role;
+     
 
     public User() {
     }
 
 	
-    public User(String username, String lastName, String email, int phone, String address, String role, String password) {
+    public User(String username, String password, int nationalId, String role) {
         this.username = username;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
+        this.nationalId = nationalId;
         this.role = role;
         this.password = password;
     }
-    public User(String username, String firstName, String lastName, String email, int phone, String address, String role, String password) {
-       this.username = username;
-       this.firstName = firstName;
-       this.lastName = lastName;
-       this.email = email;
-       this.phone = phone;
-       this.address = address;
-       this.role = role;
-       this.password = password;
-    }
+
    
     public String getUsername() {
         return this.username;
@@ -49,41 +34,15 @@ public class User  implements java.io.Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getFirstName() {
-        return this.firstName;
+
+    public int getNationalId() {
+        return nationalId;
+    }
+
+    public void setNationalId(int nationalId) {
+        this.nationalId = nationalId;
     }
     
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return this.lastName;
-    }
-    
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public String getEmail() {
-        return this.email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public int getPhone() {
-        return this.phone;
-    }
-    
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-    public String getAddress() {
-        return this.address;
-    }
-    
-    public void setAddress(String address) {
-        this.address = address;
-    }
     public String getRole() {
         return this.role;
     }
