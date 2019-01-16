@@ -40,7 +40,11 @@ public class Apply extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Session session = factory.openSession();
         try{
-            
+            String firstname = req.getParameter("firstname");
+            String lastname = req.getParameter("lastname");
+            String email = req.getParameter("email");
+            int nationalId = Integer.parseInt(req.getParameter("id"));
+            int phone = Integer.parseInt(req.getParameter("phonenumber"));
         }catch(Exception e){
             error = e.getLocalizedMessage();
             req.setAttribute("error", error);
