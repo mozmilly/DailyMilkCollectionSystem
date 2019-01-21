@@ -23,48 +23,54 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author enrico
  */
 @WebServlet("/login")
-public class Login extends HttpServlet{
+public class Login extends HttpServlet {
+
     public static SessionFactory factory;
     String error;
     String success;
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/login.jsp").forward(req,resp);
+        req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Session session = factory.openSession();
-        try{
+        try {
             String username = req.getParameter("username");
             String password = req.getParameter("password");
-            
+
             String hql = "select from User as u where u.username=:username";
             Query query = session.createQuery(hql);
             query.setString("username", username);
             List list = query.list();
-            if(list.size() == 1){
+            if (list.size() == 1) {
                 User user = (User) list.remove(0);
-                if(BCrypt.checkpw(password, user.getPassword())){
+                if (BCrypt.checkpw(password, user.getPassword())) {
                     success = "Welcome!";
                     req.setAttribute("success", success);
-                    req.getRequestDispatcher("/login.jsp").forward(req,resp);
-                }else{
-                   error = "Wrong credentials!";
+                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                } else {
+                    error = "Wrong credentials!";
                     req.setAttribute("error", error);
-                    req.getRequestDispatcher("/login.jsp").forward(req, resp); 
+                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
                 }
-            }else{
+            } else if (list.size() > 1) {
                 error = "More than one users with this username were found!";
                 req.setAttribute("error", error);
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            } else {
+                error = "No such user!";
+                req.setAttribute("error", error);
+                req.getRequestDispatcher("/login.jsp").forward(req, resp);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             error = e.getLocalizedMessage();
             req.setAttribute("error", error);
+            log("ERROR: ", e);
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }
     }
-    
+
 }
