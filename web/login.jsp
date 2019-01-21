@@ -29,7 +29,7 @@
             Password: <input type="password" name="password" required><br>
             <input type="submit" value="Login">
         </form>
-
+        <jsp:include page="./includes/footer.jsp"/>
         <jsp:include page="./includes/scripts.jsp"/>
     </body>
 </html>

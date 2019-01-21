@@ -93,7 +93,7 @@
 
         </form>
         <!-- Default form register -->
-        
+        <jsp:include page="./includes/footer.jsp"/>
         <jsp:include page="./includes/scripts.jsp"/>
 </body>
 </html>
