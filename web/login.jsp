@@ -11,14 +11,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.min.css">
-        <link rel="stylesheet" href="css/mdb.min.css">
-        <link rel="stylesheet" href="css/mdb.lite.min.css">
-        
+        <jsp:include page="./includes/global_stylesheets.jsp"/>
     </head>
     <body>
-        
+        <jsp:include page="./includes/nab-bar.jsp"/>
         <div>
             <c:if test="${requestScope.error != null}">
                 <p>${requestScope.error}</p>
@@ -28,17 +24,12 @@
             </c:if>
         </div>
         <!-- Default form register -->
-        <<form action="login" method="POST">
+        <form action="login" method="POST">
             Username: <input type="text" name="username" required><br>
             Password: <input type="password" name="password" required><br>
             <input type="submit" value="Login">
         </form>
-<!-- Default form register -->
-        
-        <script type="text/javascript" src="js/jquery-3.3.1.min.js">
-        <script type="text/javascript" src="js/bootstrap.min.js">
-        <script type="text/javascript" src="js/mdb.min.js">
-        <script type="text/javascript" src="js/popper.min.js">
-        
+        <jsp:include page="./includes/footer.jsp"/>
+        <jsp:include page="./includes/scripts.jsp"/>
     </body>
 </html>
