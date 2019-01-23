@@ -51,12 +51,11 @@ public class ApplyServlet extends HttpServlet {
             InputStream is = req.getPart("document").getInputStream();
             byte[] document = new byte[100000];
             is.read(document);
-            System.out.println("error in saving");
             Applicant applicant = new Applicant(nationalId, firstname, lastname, phone, email, document, true);
             session.saveOrUpdate(applicant);
             transaction.commit();
             session.close();
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
             
         }catch(Exception e){
             error = e.getLocalizedMessage();

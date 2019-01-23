@@ -36,7 +36,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(factory);
         Session session = factory.openSession();
         try {
             String username = req.getParameter("username");
