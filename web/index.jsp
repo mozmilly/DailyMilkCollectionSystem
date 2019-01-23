@@ -10,8 +10,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <jsp:include page="./includes/global_stylesheets.jsp"/>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:include page="./includes/nab-bar.jsp"/>
+
+        <jsp:include page="./includes/scripts.jsp"/>
+        <jsp:include page="./includes/footer.jsp"/>
     </body>
 </html>
