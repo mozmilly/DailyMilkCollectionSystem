@@ -63,10 +63,12 @@
             <!-- Sign up button -->
             <button class="btn green darken-3 my-4 btn-block" type="submit">Apply</button>
 
-
         </form>
+
+
+
         <!-- Default form register -->
         <jsp:include page="./includes/footer.jsp"/>
         <jsp:include page="./includes/scripts.jsp"/>
-</body>
+    </body>
 </html>

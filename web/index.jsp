@@ -15,6 +15,9 @@
     <body>
         <jsp:include page="./includes/nab-bar.jsp"/>
 
+        <form action="display" method="GET">
+            <input type="submit" name="showAllApplication" value="Show">
+        </form>
         <jsp:include page="./includes/scripts.jsp"/>
         <jsp:include page="./includes/footer.jsp"/>
     </body>

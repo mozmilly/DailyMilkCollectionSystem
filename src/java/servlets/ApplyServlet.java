@@ -7,6 +7,9 @@ package servlets;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +20,7 @@ import models.Applicant;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import repository.ApplicantDaoImpl;
 
 /**
  *
@@ -28,6 +32,8 @@ public class ApplyServlet extends HttpServlet {
  
     public static SessionFactory factory;
     
+    public ApplicantDaoImpl applicantDao;
+    
     String error;
     String success;
     
@@ -38,6 +44,8 @@ public class ApplyServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+     System.out.println("sdfghj");
+
         try{
             
             Session session = factory.openSession();
@@ -55,7 +63,7 @@ public class ApplyServlet extends HttpServlet {
             session.saveOrUpdate(applicant);
             transaction.commit();
             session.close();
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/login.jsp").forward(req, resp);
             
         }catch(Exception e){
             error = e.getLocalizedMessage();

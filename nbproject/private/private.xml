@@ -8,11 +8,15 @@
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/web/apply.jsp</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/web/includes/footer.jsp</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/listener/ApplicationListener.java</file>
+            <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/repository/ApplicantDAo.java</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/models/User.java</file>
+            <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/web/all-applicant.jsp</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/repository/ApplicantDaoImpl.java</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/web/includes/nab-bar.jsp</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/servlets/DisplayServlet.java</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/servlets/LoginServlet.java</file>
+            <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/models/enums/Role.java</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/models/Applicant.java</file>
             <file>file:/C:/Users/moses/Documents/NetBeansProjects/DailyMilkCollectionSystem/src/java/servlets/ApplyServlet.java</file>
