@@ -14,16 +14,10 @@
         <jsp:include page="./includes/global_stylesheets.jsp"/>
         <link rel="stylesheet" href="css/login.css" />
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/toast_message.css" rel="stylesheet">
     </head>
     <body style="background-color: #dad4d4">
-        <div>
-            <c:if test="${requestScope.error != null}">
-                <p>${requestScope.error}</p>
-            </c:if>
-            <c:if test="${requestScope.success != null}">
-                <p>${requestScope.success}</p>
-            </c:if>
-        </div>
+        <jsp:include page="./includes/toast_message.jsp" />
 
         <div class="green darken-3 topnav" style="
              position: fixed;
