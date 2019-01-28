@@ -46,12 +46,12 @@
                             <!--Body-->
                             <form action="login" method="POST">
                                 <div class="md-form">
-                                    <input type="text" id="username" class="form-control" name="username" autocomplete="false">
+                                    <input type="text" id="username" class="form-control" name="username" autocomplete="false" required>
                                     <label for="username">Username</label>
                                 </div>
 
                                 <div class="md-form">
-                                    <input type="password" id="password" class="form-control" name="password" autocomplete="false">
+                                    <input type="password" id="password" class="form-control" name="password" autocomplete="false" required>
                                     <label for="password">Your password</label>
                                 </div>
 
@@ -60,7 +60,7 @@
 
                                     <!--Grid column-->
                                     <div class="text-center mb-3 col-md-12">
-                                        <button type="submit" class="btn btn-block btn-rounded z-depth-1 navbarColor"><b>Login</b></button>
+                                        <button type="submit" class="btn btn-block btn-rounded z-depth-1 navbarColor" onclick="myFunction()"><b>Login</b></button>
                                     </div>
 
                                 </div>
@@ -85,5 +85,19 @@
 
         <jsp:include page="./includes/footer.jsp"/>
         <jsp:include page="./includes/scripts.jsp"/>
+        <script>
+            $(document).ready(function () {
+                // Get the snackbar DIV
+                var x = document.getElementById("snackbar");
+
+                // Add the "show" class to DIV
+                x.className = "show";
+
+                // After 3 seconds, remove the show class from DIV
+                setTimeout(function () {
+                    x.className = x.className.replace("show", "");
+                }, 3000);
+            });
+        </script>
     </body>
 </html>

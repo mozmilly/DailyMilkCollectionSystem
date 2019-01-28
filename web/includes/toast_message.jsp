@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <c:if test="${requestScope.error != null}">
         <div id="snackbar" style="background-color: #ff0000">${requestScope.error}</div>

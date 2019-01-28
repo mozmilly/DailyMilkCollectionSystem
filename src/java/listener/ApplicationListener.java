@@ -10,6 +10,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import models.Operator;
 import models.User;
+import models.Supplier;
 import models.enums.Role;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -38,7 +39,7 @@ public class ApplicationListener implements ServletContextListener {
             Configuration configuration = new Configuration().configure();
             configuration.addAnnotatedClass(User.class);
             configuration.addAnnotatedClass(Operator.class);
-            configuration.addAnnotatedClass(Operator.class);
+            configuration.addAnnotatedClass(Supplier.class);
             registry = new StandardServiceRegistryBuilder().applySettings(
                     configuration.getProperties()).build();
             factory = configuration.buildSessionFactory(registry);
