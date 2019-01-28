@@ -14,7 +14,11 @@
         <jsp:include page="./includes/global_stylesheets.jsp"/>
     </head>
     <body>
+<<<<<<< HEAD
 
+=======
+        <jsp:include page="./includes/nab-bar.jsp"/>
+>>>>>>> 0d5f7617eebff2a47cbee25a12a73e82ae9dba91
         <div>
             <c:if test="${requestScope.error != null}">
                 <p>${requestScope.error}</p>
