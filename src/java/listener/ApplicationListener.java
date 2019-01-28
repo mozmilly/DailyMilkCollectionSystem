@@ -19,7 +19,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.mindrot.jbcrypt.BCrypt;
-import servlets.Login;
+import servlets.LoginServlet;
 
 /**
  * Web application lifecycle listener.
@@ -44,7 +44,7 @@ public class ApplicationListener implements ServletContextListener {
             factory = configuration.buildSessionFactory(registry);
             sce.getServletContext().setAttribute("factory", factory);
             sce.getServletContext().setAttribute("registry", registry);
-            Login.factory = factory;
+            LoginServlet.factory = factory;
 
             Session session = factory.openSession();
             Transaction tx = null;
