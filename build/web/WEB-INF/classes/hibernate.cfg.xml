@@ -49,5 +49,6 @@ Contributor(s):
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <property name="hbm2ddl.auto">update</property>
+    <property name="hibernate.connection.password">Mentor94</property>
   </session-factory>
 </hibernate-configuration>

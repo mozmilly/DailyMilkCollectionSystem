@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
                 if (BCrypt.checkpw(password, user.getPassword())) {
                     success = "Welcome!";
                     req.setAttribute("success", success);
-                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                    req.getRequestDispatcher(resp.encodeURL("/tender.jsp")).forward(req, resp);
                 } else {
                     error = "Wrong credentials!";
                     req.setAttribute("error", error);

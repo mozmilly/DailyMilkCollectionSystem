@@ -1,0 +1,67 @@
+/* 
+    Created on : Jan 27, 2019, 8:57:31 PM
+    Author     : TOLBERT
+*/
+body{
+    padding: 10px;
+    background-color: lightgrey;
+   
+}
+
+#form1{
+    margin-left: 300px;
+    margin-top: 80px;
+    background-color: yellowgreen;
+    padding: 20px 12px 10px 20px;
+    max-width: 600px;
+    border: 2px solid black;
+    
+    
+}
+table{
+    padding: 50px;
+    text-align: center;
+   
+   
+    
+}
+thead{
+    padding-bottom: 15px;
+    padding-left: 500px;
+    color: white;
+   
+    
+
+    
+}
+th{
+    padding-bottom: 30px;
+    font-size: 30px;
+    
+}
+td{
+    
+     padding: 10px;
+    text-align: center;
+    
+}
+#btn{
+   padding-left: 50px;
+}
+
+.input-field{
+    text-decoration: blueviolet;
+    width: 230px;
+    height: 30px;
+    
+}
+#file1{
+    text-decoration: blueviolet;
+    width: 230px;
+    height: 30px;
+    
+}
+
+    
+    
+

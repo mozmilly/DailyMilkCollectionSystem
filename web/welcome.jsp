@@ -24,7 +24,7 @@
         <div class="green darken-3 topnav ">
             <a class="active" href="/DailyMilkCollectionSystem/">Home</a>
             <a href="#about">About Us</a>
-            <a href="#contact">Contact Us</a>
+            <a href="Contact-us">Contact Us</a>
             <div class="login-container">
                 <a href="login">Login</a>
             </div>

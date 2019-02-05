@@ -9,7 +9,11 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import models.Operator;
+import models.Supplier;
+import models.Tender;
 import models.User;
+import models.ContactUS;
+import models.MilkSupply;
 import models.enums.Role;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -19,7 +23,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.mindrot.jbcrypt.BCrypt;
+import servlets.ContactUSServlet;
 import servlets.LoginServlet;
+import servlets.MilkSupplyServlet;
+import servlets.TenderServlet;
 
 /**
  * Web application lifecycle listener.
@@ -38,13 +45,21 @@ public class ApplicationListener implements ServletContextListener {
             Configuration configuration = new Configuration().configure();
             configuration.addAnnotatedClass(User.class);
             configuration.addAnnotatedClass(Operator.class);
-            configuration.addAnnotatedClass(Operator.class);
+            configuration.addAnnotatedClass(Tender.class);
+            configuration.addAnnotatedClass(Supplier.class);
+            configuration.addAnnotatedClass(ContactUS.class);
+            configuration.addAnnotatedClass(MilkSupply.class);
+            
+            
             registry = new StandardServiceRegistryBuilder().applySettings(
                     configuration.getProperties()).build();
             factory = configuration.buildSessionFactory(registry);
             sce.getServletContext().setAttribute("factory", factory);
             sce.getServletContext().setAttribute("registry", registry);
             LoginServlet.factory = factory;
+            TenderServlet.factory = factory;
+            MilkSupplyServlet.factory= factory;
+            ContactUSServlet.factory = factory;
 
             Session session = factory.openSession();
             Transaction tx = null;

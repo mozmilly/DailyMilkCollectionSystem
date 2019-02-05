@@ -13,9 +13,11 @@
         <title>Show all applicants</title>
     </head>
     <body>
-         <c:forEach var="app" items="${applicantList}">
-           National Id: ${app.nationalId} <br>
-           First Name: ${app.firstName} <br>            
+         <c:forEach var="tender" items="${tenders}">
+            
+           Title: ${tender.title}} <br>
+           Start date: ${tender.start_date} <br>  
+           docs : ${tender.document} <br />
             -------------------------------------<br>
         </c:forEach>
     </body>

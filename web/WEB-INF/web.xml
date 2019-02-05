@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    
     <session-config>
         <session-timeout>
             30
@@ -16,4 +17,32 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>TenderServlet</servlet-name>
+        <servlet-class>servlets.TenderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TenderServlet</servlet-name>
+        <url-pattern>/create-tender</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MilkSupplyServlet</servlet-name>
+        <servlet-class>servlets.MilkSupplyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MilkSupplyServlet</servlet-name>
+        <url-pattern>/milk-supply</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ContactUSServlet</servlet-name>
+        <servlet-class>servlets.ContactUSServlet</servlet-class>
+    </servlet>    
+    <servlet-mapping>
+        <servlet-name>ContactUSServlet</servlet-name>
+        <url-pattern>/Contact-us</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
