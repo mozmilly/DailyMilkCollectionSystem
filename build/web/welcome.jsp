@@ -4,6 +4,7 @@
     Author     : AMO
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,10 +12,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-        <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="css/mdb.min.css" rel="stylesheet">
         <title>DAIRY MILK </title>
         <jsp:include page="./includes/global_stylesheets.jsp"/>
         <link href="css/style.css" rel="stylesheet">
@@ -23,11 +20,25 @@
     <body>
         <div class="green darken-3 topnav ">
             <a class="active" href="/DailyMilkCollectionSystem/">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact Us</a>
-            <div class="login-container">
-                <a href="login">Login</a>
-            </div>
+            <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">
+                <a href="#about">About Us</a>
+                <a href="Contactus.jsp">Contact Us</a>
+            </c:if>
+            <c:if test="${sessionScope.loggedIn==true}">
+                <a href="account">Account</a>
+                <a href="create-tender">Tender</a>
+                <!--<a href="/SupplyRecords">Supply Records</a>-->
+            </c:if>
+            <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">   
+                <div class="login-container">
+                    <a href="login">Login</a>
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.loggedIn==true}">
+                <div class="login-container">
+                    <a href="logout">Logout</a>
+                </div>
+            </c:if>
         </div>
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">

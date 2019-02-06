@@ -10,5 +10,5 @@ package models.enums;
  * @author enrico
  */
 public enum Role {
-    ADMIN, SUPPLIER;
+    ADMIN, COLLECTOR;
 }

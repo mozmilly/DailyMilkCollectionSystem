@@ -13,8 +13,8 @@
         <title>Login</title>
         <jsp:include page="./includes/global_stylesheets.jsp"/>
         <link rel="stylesheet" href="css/login.css" />
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/toast_message.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet"/>
+        <link href="css/toast_message.css" rel="stylesheet"/>
     </head>
     <body style="background-color: #dad4d4">
         <jsp:include page="./includes/toast_message.jsp" />
@@ -25,7 +25,7 @@
              width: 100%;
              ">
             <a class="active" href="/DailyMilkCollectionSystem/">Home</a>
-            <a href="#contact">Contact Us</a>
+            <a href="Contactus.jsp">Contact Us</a>
         </div>
 
         <!-- Portal login page-->
@@ -60,7 +60,7 @@
 
                                     <!--Grid column-->
                                     <div class="text-center mb-3 col-md-12">
-                                        <button type="submit" class="btn btn-block btn-rounded z-depth-1 navbarColor" onclick="myFunction()"><b>Login</b></button>
+                                        <button type="submit" class="btn btn-block btn-rounded z-depth-1 navbarColor"><b>Login</b></button>
                                     </div>
 
                                 </div>
@@ -82,22 +82,9 @@
             </div>
         </div>
         <!--End of login page-->
-
+        
         <jsp:include page="./includes/footer.jsp"/>
         <jsp:include page="./includes/scripts.jsp"/>
-        <script>
-            $(document).ready(function () {
-                // Get the snackbar DIV
-                var x = document.getElementById("snackbar");
-
-                // Add the "show" class to DIV
-                x.className = "show";
-
-                // After 3 seconds, remove the show class from DIV
-                setTimeout(function () {
-                    x.className = x.className.replace("show", "");
-                }, 3000);
-            });
-        </script>
+        <script type="text/javascript" src="js/toast_message.js"></script>
     </body>
 </html>

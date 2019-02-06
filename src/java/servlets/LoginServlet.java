@@ -5,12 +5,14 @@
  */
 package servlets;
 
+import beans.AccountInfoBean;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import models.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -47,8 +49,20 @@ public class LoginServlet extends HttpServlet {
                 User user = (User) list.remove(0);
                 if (BCrypt.checkpw(password, user.getPassword())) {
                     success = "Welcome!";
+
+                    //create an empty account info bean
+                    AccountInfoBean accountInfo = new AccountInfoBean();
+                    //set username and nationalId in the bean
+                    accountInfo.setUsername(username);
+                    accountInfo.setIdNo(user.getNationalId());
+                    accountInfo.setRole(user.getRole());
+                    
+                    HttpSession sessionScope = req.getSession();
+                    sessionScope.setAttribute("loggedIn", true);
+                    sessionScope.setAttribute("accountInfo", accountInfo);
+
                     req.setAttribute("success", success);
-                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                    req.getRequestDispatcher("/tender.jsp").forward(req, resp);
                 } else {
                     error = "Wrong credentials!";
                     req.setAttribute("error", error);
@@ -68,6 +82,8 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute("error", error);
             log("ERROR: ", e);
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
+        }finally{
+            session.close();
         }
     }
 

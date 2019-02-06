@@ -9,16 +9,16 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User implements java.io.Serializable {
     @Id
-    @Column(name = "username", length = 40)
-    private String username;
-    
     @Column(name = "nationalId", length = 8, nullable = false)
     private int nationalId;
+    
+    @Column(name = "username", length = 40)
+    private String username;
     
     @Column(name = "password", nullable = false)
     private String password;
     
-    @Column(name = "role", length = 8, nullable = false)
+    @Column(name = "role", length = 9, nullable = false)
     private String role;
 
     public User() {
