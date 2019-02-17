@@ -9,10 +9,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import models.Supplier;
 
 /**
  *
@@ -22,29 +23,28 @@ import models.Supplier;
 @Table( name = "supply_details")
 public class SupplyDetails implements java.io.Serializable{
     
-    private int idNo;
+    private long id;
     private double amount;
     private String quality;
     private String date;
     private Supplier supplier;
 
-
-
-    public SupplyDetails(int idNo, double amount, String quality, String date) {
-        this.idNo = idNo;
+    public SupplyDetails(double amount, String quality, String date, Supplier supplier) {
         this.amount = amount;
         this.quality = quality;
         this.date = date;
+        this.supplier = supplier;
     }
 
     @Id
-    @Column(name = "id_number")
-    public int getIdNo() {
-        return idNo;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    public long getId() {
+        return id;
     }
 
-    public void setIdNo(int idNo) {
-        this.idNo = idNo;
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Column(name = "amount")
@@ -74,7 +74,7 @@ public class SupplyDetails implements java.io.Serializable{
         this.date = date;
     }
     
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Supplier getSupplier() {
         return supplier;
     }

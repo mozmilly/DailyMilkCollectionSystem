@@ -52,8 +52,32 @@
         <servlet-name>SupplyServlets</servlet-name>
         <servlet-class>servlets.SupplyServlets</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SupplyServlets</servlet-name>
         <url-pattern>/supply</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SupplierServlet</servlet-name>
+        <servlet-class>servlets.SupplierServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SupplierServlet</servlet-name>
+        <url-pattern>/add-supplier</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PdfServlet</servlet-name>
+        <servlet-class>servlets.PdfServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PdfServlet</servlet-name>
+        <url-pattern>/tender-document</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>TenderDetails</servlet-name>
+        <servlet-class>servlets.TenderDetails</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TenderDetails</servlet-name>
+        <url-pattern>/tender-details</url-pattern>
     </servlet-mapping>
 </web-app>

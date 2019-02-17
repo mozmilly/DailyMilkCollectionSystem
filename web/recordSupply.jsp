@@ -13,12 +13,12 @@
         <link rel="stylesheet" type="text/css" href="css/tendering.css">
         <jsp:include page="./includes/global_stylesheets.jsp"/>
         <link href="css/style.css" rel="stylesheet">
-        <script src="validation.js"></script>
+        <link href="css/toast_message.css" rel="stylesheet"/>
         <title>tendering</title>
     </head>
     <body style="background-color: #dad4d4">
+        <jsp:include page="./includes/toast_message.jsp" />
         <div class="green darken-3 topnav" style="
-             position: fixed;
              top: 0;
              width: 100%;
              ">
@@ -28,6 +28,9 @@
             </c:if>
             <c:if test="${sessionScope.loggedIn==true  && sessionScope.accountInfo.role.equals('ADMIN')}">
                 <a href="create-tender">Tender</a>
+            </c:if>
+            <c:if test="${sessionScope.accountInfo.role.equals('ADMIN')}">
+                <a href="add-supplier">Add Supplier</a>
             </c:if>
             <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">   
                 <div class="login-container">
@@ -79,5 +82,7 @@
         </form>
         <br><br>
         <jsp:include page="./includes/footer.jsp"/>
+        <jsp:include page="./includes/scripts.jsp"/>
+        <script type="text/javascript" src="js/toast_message.js"></script>
     </body>
 </html>

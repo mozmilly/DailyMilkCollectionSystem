@@ -32,6 +32,9 @@
             <c:if test="${sessionScope.accountInfo.role.equals('COLLECTOR')}">
                 <a href="supply">Record Supply</a>
             </c:if>
+            <c:if test="${sessionScope.accountInfo.role.equals('ADMIN')}">
+                <a href="add-supplier">Add Supplier</a>
+            </c:if>
             <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">   
                 <div class="login-container">
                     <a href="login">Login</a>

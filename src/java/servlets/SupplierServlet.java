@@ -7,16 +7,11 @@ package servlets;
 
 import factory.GetFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Supplier;
-import models.SupplyDetails;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -25,8 +20,11 @@ import org.hibernate.Transaction;
  *
  * @author moses
  */
-public class SupplyServlets extends HttpServlet {
+public class SupplierServlet extends HttpServlet {
 
+    public static SessionFactory factory = GetFactory.getFactory();
+    String error;
+    String success;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,11 +34,6 @@ public class SupplyServlets extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    public static SessionFactory factory = GetFactory.getFactory();
-    String error;
-    String success;
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -54,7 +47,7 @@ public class SupplyServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/recordSupply.jsp").forward(req, resp);
+        req.getRequestDispatcher("/add-supplier.jsp").forward(req, resp);
     }
 
     /**
@@ -68,35 +61,28 @@ public class SupplyServlets extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-            Session session = factory.openSession();
-            try {
-                Transaction transaction = session.beginTransaction();
-                int idNo = Integer.parseInt(req.getParameter("id"));
-                int amount = Integer.parseInt(req.getParameter("amount"));
-                String quality = req.getParameter("quality");
-                String date = new Date().toString();
-                
-                String hql = "select from Supplier as s where s.nationalId=:id";
-                Query query = session.createQuery(hql);
-                query.setInteger("id", idNo);
-                List list = query.list();
-                if (list.size() == 1) {
-                    Supplier supplier = (Supplier) list.remove(0);
-                    SupplyDetails sd = new SupplyDetails(amount, quality, date, supplier);
-                    session.saveOrUpdate(sd);
-                    transaction.commit();
-                    success = "Recorded Successfully";
-                    req.setAttribute("success", success);
-                }else{
-                    error = "Supplier doesn't exist";
-                    req.setAttribute("error", error);
-                }
-            }catch(Exception e){
-                e.printStackTrace();
-            }finally{
-                session.close();
-                req.getRequestDispatcher("/recordSupply.jsp").forward(req, resp);
-            }
+        Session session = factory.openSession();
+        try {
+            Transaction transaction = session.beginTransaction();
+            int nationalId = Integer.parseInt(req.getParameter("nationalId"));
+            String firstName = req.getParameter("firstName");
+            String lastName = req.getParameter("lastName");
+            int phone = Integer.parseInt(req.getParameter("phone"));
+            String email = req.getParameter("email");
+            
+            Supplier supplier = new Supplier(nationalId, firstName, lastName, phone, email);
+            session.saveOrUpdate(supplier);
+            transaction.commit();
+            success = "Supplier Added Successfully";
+            req.setAttribute("success", success);
+        } catch (Exception e) {
+            error = "Error when adding supplier";
+            req.setAttribute("error", error);
+            e.printStackTrace();
+        }finally{
+            session.close();
+            req.getRequestDispatcher("/add-supplier.jsp").forward(req, resp);
+        }
     }
 
     /**

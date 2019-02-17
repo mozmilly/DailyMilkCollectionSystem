@@ -15,9 +15,11 @@
         <title>DAIRY MILK </title>
         <jsp:include page="./includes/global_stylesheets.jsp"/>
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/toast_message.css" rel="stylesheet"/>
     </head>
 
     <body>
+        <jsp:include page="./includes/toast_message.jsp" />
         <div class="green darken-3 topnav ">
             <a class="active" href="/DailyMilkCollectionSystem/">Home</a>
             <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">
@@ -26,8 +28,16 @@
             </c:if>
             <c:if test="${sessionScope.loggedIn==true}">
                 <a href="account">Account</a>
-                <a href="create-tender">Tender</a>
                 <!--<a href="/SupplyRecords">Supply Records</a>-->
+            </c:if>
+            <c:if test="${sessionScope.accountInfo.role.equals('COLLECTOR')}">
+                <a href="supply">Record Supply</a>
+            </c:if>
+            <c:if test="${sessionScope.accountInfo.role.equals('ADMIN')}">
+                <a href="create-tender">Tender</a>
+            </c:if>
+            <c:if test="${sessionScope.accountInfo.role.equals('ADMIN')}">
+                <a href="add-supplier">Add Supplier</a>
             </c:if>
             <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">   
                 <div class="login-container">
@@ -48,5 +58,7 @@
             </div>
         </div>
         <jsp:include page="includes/footer.jsp"/>
+        <jsp:include page="./includes/scripts.jsp"/>
+        <script type="text/javascript" src="js/toast_message.js"></script>
     </body>
 </html>

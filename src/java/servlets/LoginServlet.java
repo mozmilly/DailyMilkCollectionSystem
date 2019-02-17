@@ -6,7 +6,10 @@
 package servlets;
 
 import beans.AccountInfoBean;
+import factory.GetFactory;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +28,7 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class LoginServlet extends HttpServlet {
 
-    public static SessionFactory factory;
+    public static SessionFactory factory = GetFactory.getFactory();
     String error;
     String success;
 
@@ -52,17 +55,39 @@ public class LoginServlet extends HttpServlet {
 
                     //create an empty account info bean
                     AccountInfoBean accountInfo = new AccountInfoBean();
+                    String role = user.getRole();
                     //set username and nationalId in the bean
                     accountInfo.setUsername(username);
                     accountInfo.setIdNo(user.getNationalId());
-                    accountInfo.setRole(user.getRole());
+                    accountInfo.setRole(role);
                     
                     HttpSession sessionScope = req.getSession();
                     sessionScope.setAttribute("loggedIn", true);
                     sessionScope.setAttribute("accountInfo", accountInfo);
 
                     req.setAttribute("success", success);
-                    req.getRequestDispatcher("/tender.jsp").forward(req, resp);
+                    if(role.equals("ADMIN")){
+                        query = session.createSQLQuery("select end_date from Tender order by id desc limit 1");
+                        
+                        String end_date = query.toString();
+                        Date date = new Date();
+                        String DATE_FORMAT = "yyyy-mm-dd";
+                        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+                        String current_date = sdf.format(date);
+                        if (current_date.compareTo(end_date)<0){
+                            resp.sendRedirect("/DailyMilkCollectionSystem/tender-details");
+                        } else if(current_date.compareTo(end_date)==0){
+                            resp.sendRedirect("/DailyMilkCollectionSystem/tender-details");
+                        } else {
+                            resp.sendRedirect("/DailyMilkCollectionSystem/create-tender");
+                        }
+                    }else if(role.equals("COLLECTOR")){
+                        req.getRequestDispatcher("/recordSupply.jsp").forward(req, resp);
+                    }else{
+                        error = "Unrecognized user!";
+                        req.setAttribute("error", error);
+                        req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                    }
                 } else {
                     error = "Wrong credentials!";
                     req.setAttribute("error", error);

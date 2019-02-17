@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import factory.GetFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Tender;
+import org.apache.commons.io.IOUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -25,7 +27,7 @@ import org.hibernate.Transaction;
 @MultipartConfig()
 public class TenderServlet extends HttpServlet {
 
-    public static SessionFactory factory;
+    public static SessionFactory factory = GetFactory.getFactory();
     public String error;
 
     /**
@@ -49,8 +51,9 @@ public class TenderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        
+        
         req.getRequestDispatcher("/tender.jsp").forward(req, resp);
-
     }
 
     /**
@@ -71,8 +74,8 @@ public class TenderServlet extends HttpServlet {
             InputStream is = req.getPart("file_upload").getInputStream();
             String startDate = req.getParameter("start_date");
             String endDate = req.getParameter("end_date");
-            byte[] document = new byte[100000];
-            is.read(document);
+            byte[] document = IOUtils.toByteArray(is);
+            
             Tender tender = new Tender(title, document, startDate, endDate);
             session.saveOrUpdate(tender);
             transaction.commit();

@@ -20,7 +20,6 @@
         <jsp:include page="./includes/toast_message.jsp" />
 
         <div class="green darken-3 topnav" style="
-             position: fixed;
              top: 0;
              width: 100%;
              ">

@@ -1,11 +1,8 @@
 package models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,22 +23,18 @@ public class Supplier implements java.io.Serializable {
 
     @Column(name = "email", length = 40)
     private String email;
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-    private User user;
     
     public Supplier() {
     }
 
-    public Supplier(int nationalId, String firstName, String lastName, int phone, String email, User user) {
+    public Supplier(int nationalId, String firstName, String lastName, int phone, String email) {
         this.nationalId = nationalId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.email = email;
-        this.user = user;
     }
-
+    
     public int getNationalId() {
         return nationalId;
     }
@@ -82,17 +75,9 @@ public class Supplier implements java.io.Serializable {
         this.email = email;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
-        return "Applicant{" + "nationalId=" + nationalId + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + ", email=" + email + ", user=" + user + '}';
+        return "Supplier{" + "nationalId=" + nationalId + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + ", email=" + email + '}';
     }
 
 }

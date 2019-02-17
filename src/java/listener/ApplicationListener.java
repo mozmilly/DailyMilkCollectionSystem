@@ -5,6 +5,7 @@
  */
 package listener;
 
+import factory.GetFactory;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -25,6 +26,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import servlets.AccountDetailsServlet;
 import servlets.ChangeDetailsServlet;
 import servlets.LoginServlet;
+import servlets.SupplierServlet;
 import servlets.SupplyServlets;
 import servlets.TenderServlet;
 
@@ -54,11 +56,13 @@ public class ApplicationListener implements ServletContextListener {
             factory = configuration.buildSessionFactory(registry);
             sce.getServletContext().setAttribute("factory", factory);
             sce.getServletContext().setAttribute("registry", registry);
-            LoginServlet.factory = factory;
-            TenderServlet.factory = factory;
-            AccountDetailsServlet.factory = factory;
-            ChangeDetailsServlet.factory = factory;
-            SupplyServlets.factory = factory;
+//            LoginServlet.factory = factory;
+//            TenderServlet.factory = factory;
+//            AccountDetailsServlet.factory = factory;
+//            ChangeDetailsServlet.factory = factory;
+//            SupplyServlets.factory = factory;
+//            SupplierServlet.factory = factory;
+            GetFactory.setFactory(factory);
 
             Session session = factory.openSession();
             Transaction tx = null;

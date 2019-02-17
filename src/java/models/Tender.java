@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.io.InputStream;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,9 @@ public class Tender implements java.io.Serializable {
     
     private String end_date;
 
+    public Tender() {
+    }
+    
     public Tender(int id, String title, byte[] document, String start_date, String end_date) {
         this.id = id;
         this.title = title;
@@ -39,17 +43,13 @@ public class Tender implements java.io.Serializable {
         this.end_date = end_date;
     }
     
-    
-
     public Tender(String title, byte[] document, String start_date, String end_date) {
         this.title = title;
         this.document = document;
         this.start_date = start_date;
         this.end_date = end_date;
     }
-
     
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
@@ -87,8 +87,6 @@ public class Tender implements java.io.Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-    
-    
 
     @Lob
     @Column(name = "document", nullable = false)

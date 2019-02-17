@@ -14,6 +14,8 @@ body {
 }
 
 .topnav {
+    position: sticky;
+    z-index: 1;
     overflow: hidden;
     margin-bottom: 15px;
 }

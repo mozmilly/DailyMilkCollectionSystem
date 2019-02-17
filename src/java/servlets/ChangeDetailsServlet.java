@@ -6,6 +6,7 @@
 package servlets;
 
 import beans.AccountInfoBean;
+import factory.GetFactory;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class ChangeDetailsServlet extends HttpServlet {
 
-    public static SessionFactory factory;
+    public static SessionFactory factory = GetFactory.getFactory();
     String error;
     String success;
     
